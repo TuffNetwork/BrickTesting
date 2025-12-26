@@ -1,56 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tuff Untested</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="files.css" />
-  </head>
 
-  <body>
-    <div class="window">
-      <header class="title-bar">
-        <div class="title">Tuff Untested Builds</div>
-        <div class="buttons">
-          <button class="btn-min" aria-label="minimize">─</button>
-          <button class="btn-max" aria-label="maximize">□</button>
-          <button class="btn-close" aria-label="close">✕</button>
+<head>
+  <title>Tuff Untested</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="files.css" />
+</head>
+
+<body>
+  <div class="window">
+    <header class="title-bar">
+      <div class="title">Tuff Untested Builds</div>
+      <div class="buttons">
+        <button class="btn-min" aria-label="minimize">─</button>
+        <button class="btn-max" aria-label="maximize">□</button>
+        <button class="btn-close" aria-label="close">✕</button>
+      </div>
+    </header>
+
+    <nav class="menu-bar" aria-label="Main menu">
+      <a>File</a>
+      <a>Edit</a>
+      <a>View</a>
+      <a>Help</a>
+    </nav>
+
+    <main class="content">
+      <section class="intro">
+        <h1>Tuff Client Untested Builds</h1>
+        <p class="lead">Experimental and work-in-progress builds. Use at your own risk.</p>
+        <div class="quick-links">
+          <a class="primary" href="https://github.com/TuffNetwork/TuffX-Plugin/releases/download/1.1.0/TuffX.jar"
+            download>Download Y0 Plugin 1.1.0</a>
+          <a href="https://support.google.com/accounts/answer/32050?hl=en&co=GENIE.Platform%3DDesktop">Errors? Try this
+            first!</a>
         </div>
-      </header>
+      </section>
 
-      <nav class="menu-bar" aria-label="Main menu">
-        <a>File</a>
-        <a>Edit</a>
-        <a>View</a>
-        <a>Help</a>
-      </nav>
+      <section class="builds">
+        <h2>Latest Build</h2>
+        <ul>
+          <li>Play: <a href="files/1_1UD10/WASM/">1.1UD10 (WASM)</a> | <a href="files/1_1UD10/JS/">1.1UT10 (JS)</a></li>
+          <li>Download: <a href="files/1_1UD10/WASM/Tuff_Client_Offline_WASM.html" download>1.1UD10 WASM OFFLINE</a> |
+            <a href="files/1_1UD10/JS/Tuff_Client_JS.html" download>1.1UD10 JS OFFLINE</a></li>
+        </ul>
 
-      <main class="content">
-        <section class="intro">
-          <h1>Tuff Client Untested Builds</h1>
-          <p class="lead">Experimental and work-in-progress builds. Use at your own risk.</p>
-          <div class="quick-links">
-            <a class="primary" href="https://github.com/TuffNetwork/TuffX-Plugin/releases/download/1.1.0/TuffX.jar" download>Download Y0 Plugin 1.1.0</a>
-            <a href="https://support.google.com/accounts/answer/32050?hl=en&co=GENIE.Platform%3DDesktop">Errors? Try this first!</a>
-          </div>
-        </section>
-
-        <section class="builds">
-          <h2>Latest Untested Builds — Stable</h2>
-          <ul>
-            <li>Play: <a href="files/1_1UT8/WASM/">1.1UT8 (WASM)</a> | <a href="files/1_1UT8/JS/">1.1UT8 (JS)</a></li>
-            <li>Download: <a href="files/1_1UT8/WASM/Tuff_Client_Offline_WASM.html" download>1.1UT8 WASM OFFLINE</a> | <a href="files/1_1UT8/JS/Tuff_Client_JS.html" download>1.1UT8 JS OFFLINE</a></li>
-          </ul>
-
-          <h2>Latest Untested Builds — Unstable</h2>
-          <ul>
-            <li>Play: <a href="files/1_1UT9/WASM/">1.1UT9 (WASM)</a> | <a href="files/1_1UT9/JS/">1.1UT9 (JS)</a></li>
-            <li>Download: <a href="files/1_1UT9/WASM/Tuff_Client_Offline_WASM.html" download>1.1UT9 WASM OFFLINE</a> | <a href="files/1_1UT9/JS/Tuff_Client_JS.html" download>1.1UT9 JS OFFLINE</a></li>
-          </ul>
-        </section>
 
         <section class="support">
           <h2>🛠 Support</h2>
@@ -63,6 +61,8 @@
         <section class="archive">
           <h2>Archived Builds</h2>
           <ul>
+            <li><a href="files/1_1UT9/WASM/">1.1UT9 (WASM)</a></li>
+            <li><a href="files/1_1UT8/WASM/">1.1UT8 (WASM)</a></li>
             <li><a href="files/1_1UT7/WASM/">1.1UT7 (WASM)</a></li>
             <li><a href="files/1_1UT6/WASM/">1.1UT6 (WASM)</a></li>
             <li><a href="files/1_1UT6/JS/">1.1UT6 (JS)</a></li>
@@ -73,17 +73,23 @@
 
         <aside class="notes">
           <h3>Release Notes</h3>
-          <p><strong>Latest Version:</strong> 1.1UT9 — Very Broken!! — Published on: Dec 18, 2025</p>
+          <p><strong>Latest Version:</strong> 1.1UD10 - Merry Christmas! — Published on: Dec 26, 2025</p>
           <ul>
             <li>Major optimizations</li>
             <li>Color Configuration/Module Modifiers Basics</li>
             <li>Fixed Shields</li>
-            <li>Experimental Features: Shaders, Redone ClickGUI Backend</li>
+            <li>Experimental Features: Shaders</li>
+            <li>Presets</li>
+            <li>PVP Stat Tracker</li>
+            <li>Crosshair Range</li>
+            <li>Wisp</li>
+            <li>And WAYY more!</li>
           </ul>
         </aside>
-      </main>
+    </main>
 
-      <footer class="status-bar">Status: Active</footer>
-    </div>
-  </body>
+    <footer class="status-bar">Status: Active</footer>
+  </div>
+</body>
+
 </html>
