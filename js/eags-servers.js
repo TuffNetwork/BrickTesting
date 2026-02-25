@@ -5,19 +5,23 @@
         { addr: "wss://tuff.ws", name: "§c§ltuffnet" }
     ];
 
-    var real = Object.defineProperty;
-    Object.defineProperty = function (obj, prop, desc) {
-        if (obj === window && prop === "eaglercraftXOpts") {
-            var get = desc.get, set = desc.set;
-            if (get && set) {
-                desc.set = function (v) {
-                    set.call(this, v);
-                    var opts = get.call(this);
-                    if (opts) opts.servers = servers;
-                };
+    var internalValue;
+
+    Object.defineProperty(window, "eaglercraftXOpts", {
+        configurable: true,
+        enumerable: true,
+        get: function () {
+            return internalValue;
+        },
+        set: function (v) {
+            if (v && typeof v === "object") {
+                v.servers = servers;
             }
-            Object.defineProperty = real;
+            internalValue = v;
         }
-        return real.call(this, obj, prop, desc);
-    };
+    });
+
+    if (window.eaglercraftXOpts) {
+        window.eaglercraftXOpts.servers = servers;
+    }
 })();
