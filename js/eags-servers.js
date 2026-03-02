@@ -1,6 +1,7 @@
 (function () {
     var servers = [
         { addr: "wss://play.aethermc.cc", name: "§c§lAetherMC" },
+        { addr: "wss://eag.aethermc.cc", name: "§c§lAetherMC" },
         { addr: "wss://tuffest.org", name: "§c§ltuffnet" },
         { addr: "wss://tuff.ws", name: "§c§ltuffnet" }
     ];
