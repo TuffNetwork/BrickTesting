@@ -67,6 +67,8 @@ You can make a lot with this system, not only UI:
 - `keyUp` -> `{ keyCode }`
 - `attackEntity` -> `{ targetId, isPlayer, targetName?, reach? }`
 
+Key codes can be found on the [Minecraft Wiki](https://minecraft.wiki/w/Java_Edition_key_codes/Before_1.13)
+
 ## 7. Main API you get in mods
 
 - `api.version`
