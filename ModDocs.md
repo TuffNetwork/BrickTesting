@@ -1,25 +1,56 @@
 # Tuff Mods Documentation
 
-This guide is for making `.tuff` mods in TuffClient. it's also for how to enable and manage the mods you installed.
+This guide is for making `.tuff` mods for TuffClient and how to enable and manage installed mods.
 
-## 1. What a `.tuff` file is
+## Using mods
 
-A `.tuff` file is JSON
-It is made of two things:
+### What a `.tuff` file is
 
-- `meta` (mod info. ex. your username, minimum client version, etc.)
-- `files` (your JS code, what you want the mod to do)
+A `.tuff` file is simply a JSON file made of two things:
 
-## 2. How to install a mod
+- `meta` - mod info. ex: username, minimum client version, etc.
+- `files` - JS code (JSON serialized and one line), what the mod does
 
-1. Press `Right Shift`
-2. Press `Add Mods` at the bottom
+It is ***not*** a Java .jar mod and is *not* like Fabric or Forge in any way; there is no compiled java code.
+
+### How to install
+
+1. Open the Modules menu by pressing `Right Shift` (or from the escape menu or main menu)
+2. Scroll to the bottom and press `Add Mods` at the bottom
 3. Pick one or more `.tuff` files
-4. Press `Manage Mods` to enable, disable, uninstall, etc. Basically just manage the mods.
+4. Press `Manage Mods` to enable, disable, uninstall, etc.
 
-If a mod makes big changes, it can use `api.reloadClient()`. I added this because well: for a Fabric mod you always have to restart your game, so if your mod does something that will need a reload, use that.
+If a mod makes drastic changes, it can use `api.reloadClient()` to restart the game.
 
-## 3. Basic file format
+## Creating mods
+
+### Possibilities
+
+You can make a lot with this system, not only UI:
+
+- HUD widgets (text, timers, status)
+- PvP trainers (like WTap timing help)
+- QoL tools (chat macros, key tools, view tools)
+- Camera/perspective tools (freelook, third person)
+- Cosmetic changes and client side changes
+- Settings saved per mod
+- Tick-based and key-based actions
+
+[View more below](#concepts)
+
+### Rules
+
+Mods should stay legit:
+
+1. HUD
+2. trainers
+3. cosmetics
+4. QoL
+These are safe examples
+
+Do not make cheat mods: aim assist, velocity, auto clickers, unfair reach, macros that give a PVP advantage, etc.
+
+### Basic file format
 
 ```json
 {
@@ -38,7 +69,7 @@ If a mod makes big changes, it can use `api.reloadClient()`. I added this becaus
 }
 ```
 
-## 4. Rules your mod must pass
+#### Formatting Rules
 
 - `meta.id` must start with a letter or number, and only use letters, numbers, or - and _
 - `meta.entry` must exist in `files` (thats the js file name. ex. `"main.js": "module.exports = function(api){ api.log('loaded'); };"`  here in that example it's main.js)
@@ -47,19 +78,7 @@ If a mod makes big changes, it can use `api.reloadClient()`. I added this becaus
 - Entry must export a function:
   - `module.exports = function(api){ ... }` (you need to use the runtime API, or else my JS api won't work)
 
-## 5. Things you can make
-
-You can make a lot with this system, not only UI:
-
-- HUD widgets (text, timers, status)
-- PvP trainers (like WTap timing help)
-- QoL tools (chat macros, key tools, view tools)
-- Camera/perspective tools (freelook, third person stuff)
-- Cosmetic changes and client side changes
-- Settings saved per mod
-- Tick based stuff and key based stuff
-
-## 6. Events you can use for mods
+### Events
 
 - `tick` -> `{ now, delta }`
 - `render2d` -> `{ ctx, width, height, partialTicks }`
@@ -69,7 +88,7 @@ You can make a lot with this system, not only UI:
 
 Key codes can be found on the [Minecraft Wiki](https://minecraft.wiki/w/Java_Edition_key_codes/Before_1.13)
 
-## 7. Main API you get in mods
+### Main API
 
 - `api.version`
 - `api.on(event, fn)` / `api.off(event, fn)`
@@ -81,7 +100,7 @@ Key codes can be found on the [Minecraft Wiki](https://minecraft.wiki/w/Java_Edi
 - `api.toast(message, type?)`
 - `api.log(...args)`
 
-## 8. Client control API
+### Client control API
 
 These can change gameplay too:
 
@@ -98,15 +117,15 @@ These can change gameplay too:
 - `api.setFov(number)`
 - `api.reloadClient()`
 
-## 9. Unsafe permission (full power mode)
+### Permissions
 
-If you add `"unsafe"` in permissions, your mod gets full power mode.
+Possible permissions:
 
 ```json
 "permissions": ["hud", "events", "modules", "unsafe"]
 ```
 
-What it does:
+If you add `"unsafe"` in permissions, your mod gets full power mode:
 
 - allows browser globals in runtime
 - allows `eval` and `Function` (these allow you to do more complex things)
@@ -114,23 +133,15 @@ What it does:
 
 Use this careful, because unsafe mods can change almost everything.
 
-## 10. No cheat rule
+### Debug tips
 
-Mods should stay legit:
+- If install fails, read the stacktrace in the text popup.
+- Keep `main.js` small at first and then if it works make it bigger
+- Check JSON commas, etc.
+- Check `meta.entry` file name exactly matches.
+- If a mod acts weird, reload once and test again.
 
-1. HUD
-2. trainers
-3. cosmetics
-4. QoL
-These are safe examples
-
-Do not make cheat mods: aim assist, velocity, auto clickers or unfair reach.
-
-## Rendering mods (HUD + view stuff)
-
-Rendering mods are mods that change what the player views on their screen, without changing server.
-
-### What you can do
+### Concepts
 
 - Make custom text and status on screen with `api.registerHUD(...)`
 - Update visuals every frame with the `render2d` event
@@ -139,13 +150,13 @@ Rendering mods are mods that change what the player views on their screen, witho
   - `api.setPerspective(mode)` (`0` first person, `1` third person back, `2` third person front)
   - `api.setFreelookEnabled(bool)`
   - `api.resetFreelook()`
-- Control entity culling for non-player entities:
+- Control entity culling for non-player entities (Players are rendered normally):
   - `api.setMobCullingEnabled(bool)`
   - `api.setMobCullingDistance(number)`
 
-Players are rendered normal. Culling only affects non-player entities.
+#### Simple HUD render example (before being JSON serialized)
 
-### Simple HUD render example
+Rendering mods are mods that change what the player views on their screen, without changing server.
 
 ```js
 module.exports = function(api){
@@ -157,8 +168,11 @@ module.exports = function(api){
     });
   });
 };
+```
 
-## 12. Example 1: Hello HUD
+### Complete Examples
+
+#### Example 1: Hello HUD
 
 ```json
 {
@@ -177,7 +191,7 @@ module.exports = function(api){
 }
 ```
 
-## 13. Example 2: Freelook toggle (first person)
+#### Example 2: Freelook toggle (first person)
 
 ```json
 {
@@ -196,7 +210,7 @@ module.exports = function(api){
 }
 ```
 
-## 14. Example 3: Quick chat macro
+#### Example 3: Quick chat macro
 
 ```json
 {
@@ -214,11 +228,3 @@ module.exports = function(api){
   }
 }
 ```
-
-## 15. Debug tips
-
-- If install fails read the stacktrace in the text popup.
-- Keep `main.js` small at first and then if it works make it bigger
-- Check JSON commas, etc.
-- Check `meta.entry` file name exactly matches.
-- If a mod acts weird, reload once and test again.
