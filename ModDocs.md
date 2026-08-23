@@ -11,7 +11,7 @@ A `.tuff` file is simply a JSON file made of two things:
 - `meta` - mod info. ex: username, minimum client version, etc.
 - `files` - JS code (JSON serialized and one line), what the mod does
 
-It is ***not*** a Java .jar mod and is *not* like Fabric or Forge in any way; there is no compiled java code.
+Tuff Mods are more like client-side plugins in that they can hook into specific events and perform actions. They are ***not*** Java .jar mods and are *not* like Fabric or Forge in any way; there is no compiled java code. They can't modify the client in ways the true Java mods can.
 
 ### How to install
 

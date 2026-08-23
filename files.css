@@ -1,12 +1,14 @@
 :root {
     --bg: #0b0b0b;
-    --surface: #121212;
+    --surface: #151515;
     --surface-2: #1a1a1a;
+    --item-1: #252525;
+    --item-2: #2c2c2c;
     --border: #2a2a2a;
     --border-strong: #3a3a3a;
 
     --text: #d0d0d0;
-    --text-muted: #8a8a8a;
+    --text-muted: #bababa;
     --text-dim: #666;
     --text-invert: #111;
 
@@ -36,12 +38,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px;
+    padding: 20px;
 }
 
 .container {
     width: 100%;
-    max-width: 620px;
+    max-width: 820px;
     background: var(--surface);
     border: 1px solid var(--border-strong);
     border-radius: var(--radius-lg);
@@ -56,7 +58,7 @@ body {
 }
 
 .logo {
-    font-size: 20px;
+    font-size: 28px;
     font-weight: 600;
     color: var(--accent);
     margin-bottom: 12px;
@@ -70,11 +72,11 @@ body {
 
 .nav-btn {
     appearance: none;
-    background: transparent;
+    background: var(--item-1);
     border: 1px solid transparent;
-    padding: 6px 12px;
-    font-size: 13px;
-    font-weight: 500;
+    padding: 10px 14px;
+    font-size: 15px;
+    font-weight: 550;
     color: var(--text-muted);
     border-radius: var(--radius-sm);
     cursor: pointer;
@@ -82,7 +84,7 @@ body {
 }
 
 .nav-btn:hover {
-    background: var(--surface-2);
+    background: var(--item-2);
     color: var(--accent);
 }
 
@@ -90,6 +92,10 @@ body {
     background: var(--accent);
     color: var(--text-invert);
     border-color: var(--accent);
+}
+
+.nav-btn.active:hover {
+    background: var(--text);
 }
 
 .section {
@@ -108,13 +114,13 @@ body {
 }
 
 .section-header h2 {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--accent);
 }
 
 .badge {
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 500;
     padding: 3px 8px;
     background: var(--accent);
@@ -131,7 +137,7 @@ body {
 }
 
 .card h3 {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--accent);
     margin-bottom: 6px;
@@ -174,7 +180,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 8px 14px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     text-decoration: none;
     border-radius: var(--radius-sm);
@@ -187,17 +193,17 @@ body {
 }
 
 .btn-primary:hover {
-    background: #e5e5e5;
+    background: var(--text);
 }
 
 .btn-secondary {
-    background: var(--surface-2);
+    background: var(--item-1);
     color: var(--text);
     border: 1px solid var(--border);
 }
 
 .btn-secondary:hover {
-    background: #222;
+    background: var(--item-2);
 }
 
 .archive-list {
